@@ -76,16 +76,12 @@
 				<li><a href="../posts/01.html#Pre">Prerequisites</a></li>
                 <li><a href="../posts/01.html#winmac">Setup your Windows Machine</a></li>
                 <li><a href="../posts/01.html#linmac">Setup your Linux Machine</a></li>
-                <li><a href="#">Gathering Device Information </a>
-                  <ul>
-                    <li><a href="#">Device Processor and CodeName</a></li>
-                    <li><a href="#">Selecting Perfect Kernel Source Code</a></li></ul>
-                <li><a href="#">Choosing Perfect Toolchain</a></li>
-                <li><a href="#">The Compiling Process</a></li>
+                <li><a href="../posts/01.html#GD">Gathering Device Info and Source</a></li>
+                <li><a href="../posts/01.html#CP">The Compiling Process</a></li>
                     </li>
                   </ul>
                 </li>
-                <li><a href="#">Testing Your Kernel</a></li>
+                <li><a href="../posts/01.html#TT">Testing Your Kernel</a></li>
               </ul>
 			</nav>
 
@@ -114,6 +110,7 @@
 		<h1><a name="linmac">Setup your Linux Machine</a></h1>
 		<p>Now Turn ON your Virtual Machine and setup initial things like account and stuff.</p>
 		<p>After doing all first boot initial things... <b>Now the main part starts...</b></p>
+		<h1><a Name="GD">Gathering Device Info and Source</a></h1>
 		<p>Now Start gathering your device details like Codename, Processor, Board, etc.</p>
 		<p>There are few ways through which you can find these things and the simplest way is using a simple app name <a href="https://play.google.com/store/apps/details?id=com.cpuid.cpu_z&hl=en_IN&gl=US" target="_blank">CPU-Z.</a></p>
 		<P>After gathering device details, Now you need to find kernel source code for your device over the internet <br>I suggest you to first go through the github repos to find your device's Kernel source code. <br> 
@@ -123,14 +120,44 @@
 		<br>For Example <b>git clone https://github.com/PixelExperience-Devices/device_xiaomi_begonia.git -b twelve</b> </p>
 		<P>If it shows an error like git not found or something.. use <b>sudo apt install git</b> to install git. 
 			<br> After downloading kernel source you need to download few more files like <br>
-			<b><a href="https://gitlab.com/kalilinux/nethunter/build-scripts/kali-nethunter-kernel.git">Kali Nethunter Kernel Gitlab Repo</a></b> <br>
-			<b><a href="https://gitlab.com/kalilinux/nethunter/build-scripts/kali-nethunter-project.git">Kali Nethunter Installer Gitlab Repo</a></b> and In Installer folder run the bootstrap.sh to sync the devices. 
+			<b><a href="https://gitlab.com/kalilinux/nethunter/build-scripts/kali-nethunter-kernel.git">Kali Nethunter Kernel Builder Gitlab Repo</a></b> <br>
+			<b><a href="https://gitlab.com/kalilinux/nethunter/build-scripts/kali-nethunter-project.git">Kali Nethunter Installer Gitlab Repo</a></b> 
+			<br> and In Installer folder run the bootstrap.sh to sync the devices. 
 			<br>Now copy the Kali Nethunter Kernel Folder in your Kernel Source <br> And go to Nethunter Install then Run the build.sh using <b>bash build.sh</b> 
 			<br>
 			<br>After running the script.. <b>Setup the environment and Download Toolchains</b></p>
 			<img src="../posts/images/files/Kali.png">
+			<p><br></p>
+			<h1><a Name="CP">The Compiling Process</a></h1>
 
-			<p> <b>After setuping</b> the environment, Patch your kernel source</p> 
+			<p><b>After setuping</b> the environment, Patch your kernel source by choosing options of your kernel version 
+				<br>
+				<br>Know your kernel version by running <b>make kernelversion</b> in terminal at device kernel source folder.
+				<br>Now it's time to edit the defconfig file by choosing the <b>Edit Default Kernel Config</b> in build Menu.
+				<br>Use this <a href="https://www.kali.org/docs/nethunter/porting-nethunter-kernel-builder/">guide</a> to edit the Kernel Config.
+			</p> 
+			<img src="../posts/images/files/kernel.png">
+			<p><br></p>
+			<p><b>After Editing and Saving the defconfig.</b> 
+				<br> Go back to the Build Main Menu and choose option 2 to compile your kernel from Scratch.
+				<br> You can also use your own custom building script to make the process easy.
+				<br> I'm sharing you<a href="https://github.com/IamCOD3X/Android-Kernel-Compiling-Stuff.git">My compiling Scripts and Stuff.</a>
+				<br> If you face any error comment us. We will try to figure it out.</p>
+			<p>
+				If the compilation is successful then copy your modules and Image from <b>Out and Module_Out</b> folder.
+				<br>Note: Warnings can be ignored.
+				<br>Paste the modules and Image in Kali Nethunter Project folder to add your device by reading the documentation.
+				<br>And now just pack the Kernel using Python3 Build Script in kali-nethunter-project folder.
+				<h1>CONGRATULATIONS. You Have Successfully Build your Own Android Kernel</h1>
+
+			</p>
+			
+			<h1><a Name="TT">Testing Your Kernel</a></h1>
+			<p>Go to TWRP and Take Backup of your current Boot Partition <br>
+				 Then flash your new Kernel.zip
+				<br>Note. First Boot may take time so be patient</p>
+
+			<p>Enjoy and Try New Hack Tricks<p>
 		
 
 
@@ -142,44 +169,15 @@
 				<header>
 				  <figure class="avatar"><img src="../images/live/avatar.png" alt=""></figure>
 				  <address>
-				  By <a href="#">A Name</a>
+				  By <a href="#">Testers</a>
 				  </address>
-				  <time datetime="2045-04-06T08:15+00:00">Friday, 6<sup>th</sup> April 2045 @08:15:00</time>
+				  <time datetime="2023-02-27T02:44+00:00">Monday, 27<sup>th</sup> Feb 2023 @02:44:00</time>
 				</header>
 				<div class="comcont">
 				  <p>This is an example of a comment made on a post. You can either edit the comment, delete the comment or reply to the comment. Use this as a place to respond to the post or to share what you are thinking.</p>
 				</div>
 			  </article>
 			</li>
-			<li>
-			  <article>
-				<header>
-				  <figure class="avatar"><img src="../images/live/avatar.png" alt=""></figure>
-				  <address>
-				  By <a href="#">A Name</a>
-				  </address>
-				  <time datetime="2045-04-06T08:15+00:00">Friday, 6<sup>th</sup> April 2045 @08:15:00</time>
-				</header>
-				<div class="comcont">
-				  <p>This is an example of a comment made on a post. You can either edit the comment, delete the comment or reply to the comment. Use this as a place to respond to the post or to share what you are thinking.</p>
-				</div>
-			  </article>
-			</li>
-			<li>
-			  <article>
-				<header>
-				  <figure class="avatar"><img src="../images/live/avatar.png" alt=""></figure>
-				  <address>
-				  By <a href="#">A Name</a>
-				  </address>
-				  <time datetime="2045-04-06T08:15+00:00">Friday, 6<sup>th</sup> April 2045 @08:15:00</time>
-				</header>
-				<div class="comcont">
-				  <p>This is an example of a comment made on a post. You can either edit the comment, delete the comment or reply to the comment. Use this as a place to respond to the post or to share what you are thinking.</p>
-				</div>
-			  </article>
-			</li>
-		  </ul>
 		  <h2>Write A Comment</h2>
 		  <form action="" method="post">
 			<div class="one_third first">
