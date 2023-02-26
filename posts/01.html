@@ -73,8 +73,9 @@
             <nav class="sdb_holder">
               <ul>
 				<li><a href="../posts/01.html#Intro">Introduction</a></li>
+				<li><a href="../posts/01.html#Pre">Prerequisites</a></li>
                 <li><a href="../posts/01.html#winmac">Setup your Windows Machine</a></li>
-                <li><a href="#">Setup your Linux Machine</a></li>
+                <li><a href="../posts/01.html#linmac">Setup your Linux Machine</a></li>
                 <li><a href="#">Gathering Device Information </a>
                   <ul>
                     <li><a href="#">Device Processor and CodeName</a></li>
@@ -94,20 +95,44 @@
 	<!-- BLOG BODY-->
 	<div class="content three_quarter"> 
 		<!-- ################################################################################################ -->
+		<h1>How to Build Your Own Android Kernel</h1>
 		<h1><a name="Intro">Introduction</a></h1>
 		<h1>What is Android Kernel</h1>
 		<img class="imgr borderedbox inspace-5" src="../images/live/imgr.gif" alt="">
 		<p>On an Android, a kernel is the core program that manages the CPU resources, the system memory, the system devices, including the file systems and networking, and is responsible for managing all the processes.</p>
-		<img class="imgl borderedbox inspace-5" src="../images/live/imgl.gif" alt="">
 		<h1>Why Kernel is Important!</h1>
 		<p>It basically manages operations of memory and CPU time. It is core component of an operating system. Kernel acts as a bridge between applications and data processing performed at hardware level using inter-process communication and system calls.</p>
 		<br>
-		<h1>Prerequisites</h1>
-		<p>1.Computer & Internet <br> 2.Little C Knowledge <br> 3.Common Sense :) </p>
+		<h1><a name="Pre">Prerequisites</a></h1>
+		<p>1.A Computer & Internet <br> 2.Little C Knowledge <br> 3.Common Sense :) </p>
 
 		<h1>Lets Begin</h1>
 		<h1><a name="winmac">Setup your Windows Machine</a></h1>
-		<p>Download <a href="https://www.vmware.com/in.html">VMWare</a> or <a href="https://www.virtualbox.org/">VirtualBox</a> for setup the guest Machine.</p>
+		<p>Download <a href="https://www.vmware.com/in.html" target="_blank">VMWare</a> or <a href="https://www.virtualbox.org/" target="_blank">VirtualBox</a> for setup the guest Machine.</p>
+		<p>Then Download Linux ISO File. Note. Suggested Linux:<a href="https://ubuntu.com/" target="_blank">Ubuntu</a> or <a href="https://www.kali.org/" target="_blank">Kali Linux</a></p>
+		<p>Create a new Virtual Machine using this guide <a href="https://youtu.be/7r6jll6lgaI" target="_blank">How to make a New Virtual Machine</a> <br> If you know how to create a Virtual Machine then skip this step.</p>
+		<h1><a name="linmac">Setup your Linux Machine</a></h1>
+		<p>Now Turn ON your Virtual Machine and setup initial things like account and stuff.</p>
+		<p>After doing all first boot initial things... <b>Now the main part starts...</b></p>
+		<p>Now Start gathering your device details like Codename, Processor, Board, etc.</p>
+		<p>There are few ways through which you can find these things and the simplest way is using a simple app name <a href="https://play.google.com/store/apps/details?id=com.cpuid.cpu_z&hl=en_IN&gl=US" target="_blank">CPU-Z.</a></p>
+		<P>After gathering device details, Now you need to find kernel source code for your device over the internet <br>I suggest you to first go through the github repos to find your device's Kernel source code. <br> 
+		Usually developers use a name format to name their repo's on github like <b>android_kernel_brand_codename</b> <b><br> For example "android_kernel_xiaomi_dior"</b></P>
+		<p>Now select the branch of your desired Android Version like Pie, Q , R , S , T and copy the git repo code and keep noted the branch name <br> 
+		Now Open Terminal in your Linux and Make a folder named Kernel using <b>mkdir Kernel</b> command and <b>cd Kernel</b>. <br> Now type <b>git clone (git repo code) -b (branch name)</b> 
+		<br>For Example <b>git clone https://github.com/PixelExperience-Devices/device_xiaomi_begonia.git -b twelve</b> </p>
+		<P>If it shows an error like git not found or something.. use <b>sudo apt install git</b> to install git. 
+			<br> After downloading kernel source you need to download few more files like <br>
+			<b><a href="https://gitlab.com/kalilinux/nethunter/build-scripts/kali-nethunter-kernel.git">Kali Nethunter Kernel Gitlab Repo</a></b> <br>
+			<b><a href="https://gitlab.com/kalilinux/nethunter/build-scripts/kali-nethunter-project.git">Kali Nethunter Installer Gitlab Repo</a></b> and In Installer folder run the bootstrap.sh to sync the devices. 
+			<br>Now copy the Kali Nethunter Kernel Folder in your Kernel Source <br> And go to Nethunter Install then Run the build.sh using <b>bash build.sh</b> 
+			<br>
+			<br>After running the script.. <b>Setup the environment and Download Toolchains</b></p>
+			<img src="../posts/images/files/Kali.png">
+
+			<p> <b>After setuping</b> the environment, Patch your kernel source</p> 
+		
+
 
 		<div id="comments">
 		  <h2>Comments</h2>
@@ -156,7 +181,7 @@
 			</li>
 		  </ul>
 		  <h2>Write A Comment</h2>
-		  <form action="#" method="post">
+		  <form action="" method="post">
 			<div class="one_third first">
 			  <label for="name">Name <span>*</span></label>
 			  <input type="text" name="name" id="name" value="" size="22" required>
