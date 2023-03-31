@@ -41,25 +41,24 @@
     
     <div class="bgded overlay row4" style="background-image:url('images/live/backgrounds/03.png');">
 		<center>
-			<!-- ################################################################################################ -->
-			<hr class="btmspace-50">
-			<!-- ################################################################################################ -->
+			<h2>&nbsp;</h2>
 			<div class="current">
 				<h6  class="heading"><a name="request">We have received your payment.👻 <br> We will process your order soon.</a></h6>
 				<p class="nospace btmspace-15">Share your details with us so that we can share you the download link. </p>
-				<form action="./submit.html" onsubmit=" return sender()">	
+				<form onsubmit="return sender()" method="GET" action="./submit.html"  >	
 					<fieldset>
 						<legend>Telegram Us</legend>
 						<input class="btmspace-15" type="text" id="Name" name="Name" placeholder="Name" required>
 						<input class="btmspace-15" type="text" id="Message" name="Message" placeholder="Message" required>
                         <input class="btmspace-15" type="text" id="Device" name="Device" placeholder="Device" required>
+						<input class="btmspace-15" type="text" id="TelegramID" name="Telegram" placeholder="Telegram Username" required>
 						<button type="submit" value="submit">Send</button> 
 					</fieldset>
 				</form>
 			</div>
             <h2>&nbsp;</h2>
 		</center>
-<hr>
+
 <footer id="footer" class="hoc clear"> 
 		<!-- ################################################################################################ -->
 		<div class="center btmspace-50">

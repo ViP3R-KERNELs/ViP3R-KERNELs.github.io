@@ -7,7 +7,8 @@ var ready = function () {
     u_name = document.getElementById("Name").value;
     defmessage = document.getElementById("Message").value;
     device = document.getElementById("Device").value;
-    message = "Name: " + u_name + "\nMessage: " + defmessage + "\nDevice: " + device;
+    telegram = document.getElementById("TelegramID").value;
+    message = "Name: " + u_name + "\nMessage: " + defmessage + "\nDevice: " + device + "\nTelegramID: "+ "@" + telegram;
 };
 var sender = function () {
     ready();
@@ -31,5 +32,6 @@ var sender = function () {
     document.getElementById("Name").value = "";
     document.getElementById("Message").value = "";
     document.getElementById("Device").value = "";
+    document.getElementById("TelegramID").value = "";
     return false;
 };
