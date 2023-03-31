@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 
 <html lang="English">
@@ -41,24 +42,21 @@
     
     <div class="bgded overlay row4" style="background-image:url('images/live/backgrounds/03.png');">
 		<center>
-			<!-- ################################################################################################ -->
-			<hr class="btmspace-50">
-			<!-- ################################################################################################ -->
-			<div class="current">
-				<h6  class="heading"><a name="request">We have received your payment.👻 <br> We will process your order soon.</a></h6>
-				<p class="nospace btmspace-15">Share your details with us so that we can share you the download link. </p>
-				<form action="https://github.com/IamCOD3X/IamCOD3X.github.io/submit.php" method="get" >
-					<fieldset>
-						<legend>Telegram Us</legend>
-						<input class="btmspace-15" type="text" name="Name" placeholder="Name" required>
-						<input class="btmspace-15" type="text" name="Message" placeholder="Message" required>
-                        <input class="btmspace-15" type="text" name="Device" placeholder="Device" required>
-						<button type="submit" value="submit">Send</button>
-					</fieldset>
-				</form>
-			</div>
-            <h2>&nbsp;</h2>
-		</center>
+      <?php
+      define ('url',"https://api.telegram.org/bot6062525807:AAHXSfoz4ihG1fZThmBy945_mwTbRlAq08E/");
+      $name = $_GET['Name'];
+      $message = $_GET['Message'];
+      $device = $_GET['Device'];
+      $chat_id = '798615127';
+      $message = urlencode("Name:".$name."\n Message : ".$message."\n Device : ".$device);
+      file_get_contents(url."sendmessage?text=".$message."&chat_id=".$chat_id."&parse_mode=HTML");
+      ?>
+
+      <h2>&nbsp;</h2>
+        <h1>Almost Done</h1>
+        <p>You Message has been send through <a href="https://t.me/ViPER_KERNELs">Telegram</a> </p>
+      </center>
+      
 <hr>
 <footer id="footer" class="hoc clear"> 
 		<!-- ################################################################################################ -->
