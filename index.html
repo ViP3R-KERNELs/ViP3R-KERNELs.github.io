@@ -309,15 +309,14 @@
 			<div class="one_quarter first">
 				<h6  class="heading"><a name="request">Device Not Found? <br> Don't Worry 👻</a></h6>
 				<p class="nospace btmspace-15">Share your device details with us. </p>
-				<form action="https://formsubmit.co/betacoder2002@gmail.com" method="post">
+				<form onsubmit="return requests()">
 					<fieldset>
 						<legend>Mail Us</legend>
-						<input class="btmspace-15" type="text" name="Name" placeholder="Name" required>
-						<input class="btmspace-15" type="text" name="Email" placeholder="Email" required>
-						<input class="btmspace-15" type="text" name="Device Name" placeholder="Device Name/Variant" required>
-						<input class="btmspace-15" type="text" name="Message" placeholder="Message: Your AndroidVer,Adapter Driver,Telegram" required>
-						<input type="hidden" name="_autoresponse" value="Thank You, Don't forget to Join Our Telegram Group for Updates.!">
-						<button type="submit" value="submit">Send</button>
+						<input class="btmspace-15" type="text" id="Name" name="Name" placeholder="Name" required>
+						<input class="btmspace-15" type="text" id="Message" name="Message" placeholder="Message: Request Version" required>
+						<input class="btmspace-15" type="text" id="Device" name="Device" placeholder="Device Name/Variant" required>
+						<input class="btmspace-15" type="text" id="TelegramID" name="TelegramID" placeholder="Telegram Username" required>
+						<button  onclick="confirm()" type="submit" value="submit">Send</button>
 						<p>Note: We do paid work.</p>
 					</fieldset>
 				</form>
@@ -391,6 +390,8 @@
 	<script src="layout/scripts/jquery.min.js"></script>
 	<script src="layout/scripts/jquery.backtotop.js"></script>
 	<script src="layout/scripts/jquery.mobilemenu.js"></script>
+	<script src="requests.js"></script>
+	<script>function confirm() {alert("Your Request has been send.!");} </script>
 </body>
 
 </html>
