@@ -2,15 +2,15 @@
 var telegram_bot_id = "6013825963:AAH5E4k83EQ55dXvXjhhAH6eshM8eCcfS1Q";
 //chat id
 var chat_id = 798615127;
-var u_name, message, device;
+var Uname, Umessage, Udevice, Utelegram;
 var ready = function () {
-    u_name = document.getElementById("Name").value;
-    defmessage = document.getElementById("Message").value;
-    device = document.getElementById("Device").value;
-    telegram = document.getElementById("TelegramID").value;
-    message = "Name: " + u_name + "\nMessage: " + defmessage + "\nDevice: " + device + "\nTelegramID: "+ "@" + telegram;
+    Uname = document.getElementById("_Name").value;
+    Umessage = document.getElementById("_Message").value;
+    Udevice = document.getElementById("_Device").value;
+    Utelegram = document.getElementById("_TelegramID").value;
+    message = "_Name: " + Uname + "\n_Message: " + Umessage + "\n_Device: " + Udevice + "\n_TelegramID: "+ "@" + Utelegram;
 };
-var sender = function () {
+var requests = function () {
     ready();
     var settings = {
         "async": true,
@@ -29,9 +29,9 @@ var sender = function () {
     $.ajax(settings).done(function (response) {
         console.log(response);
     });
-    document.getElementById("Name").value = "";
-    document.getElementById("Message").value = "";
-    document.getElementById("Device").value = "";
-    document.getElementById("TelegramID").value = "";
+    document.getElementById("_Name").value = "";
+    document.getElementById("_Message").value = "";
+    document.getElementById("_Device").value = "";
+    document.getElementById("_TelegramID").value = "";
     return false;
 };
