@@ -8,7 +8,7 @@ var ready = function () {
     Umessage = document.getElementById("_Message").value;
     Udevice = document.getElementById("_Device").value;
     Utelegram = document.getElementById("_TelegramID").value;
-    message = "_Name: " + Uname + "\n_Message: " + Umessage + "\n_Device: " + Udevice + "\n_TelegramID: "+ "@" + Utelegram;
+    message = "Name: " + Uname + "\nMessage: " + Umessage + "\nDevice: " + Udevice + "\nTelegramID: "+ "@" + Utelegram;
 };
 var requests = function () {
     ready();
