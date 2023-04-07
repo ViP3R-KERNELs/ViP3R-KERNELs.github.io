@@ -2,7 +2,7 @@
 
 <html lang="">
 <head>
-<title>How to compile your onw kernel</title>
+<title>How to Flash custom ROM</title>
 <link rel="icon" type="image/x-icon" href="/images/live/icon.ico">
 <link href="layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
 <meta charset="utf-8">
@@ -35,7 +35,7 @@
 		  <ul class="clear">
 			<li><a href="index.html">Home</a></li>
 			<li><a href="downloads.html">Downloads</a></li>
-			<li><a href="../index.html#request">Request a Device</a>
+			<li><a  href="../index.html#request">Request a Device</a>
 			<li><a href="../pages/SupportedDevice.html">Devices</a></li>
 			<li><a class="drop" href="#">Support Us</a>
 			  <ul>
@@ -43,7 +43,7 @@
 				<li><a href="https://ko-fi.com/iamcod3x">Buy Me a Ko-Fi</a></li>
 				<li><a href="https://www.paypal.me/IamCODER">PayPal</a></li>
 			  </ul>
-              <li><a href="blog.html">My Blog</a></li>
+              <li><a href="blog.html"><strong>My Blog</strong></a></li>
 			<li><a href="about.html">About Us</a></li>
 		  </ul>
 		</nav>
@@ -62,121 +62,107 @@
 		<!-- ################################################################################################ -->
 	  </section>
     <div class="wrapper row3">
-        <main class="hoc container clear"> 
+        <main class="hoc container clear">
+			<center><h1>How To Run Kali Chroot For SD Card</h1></center>
           <!-- main body -->
           <!-- ################################################################################################ -->
           <div class="sidebar one_quarter first"> 
             <!-- ################################################################################################ -->
+			<h2>&nbsp;</h2>
             <h6>Contents</h6>
             <nav class="sdb_holder">
-              <ul>
-                <li><a href="#">Setup your Windows Machine</a></li>
-                <li><a href="#">Setup your Linux Machine</a></li>
-                <li><a href="#">Gathering Device Information </a>
-                  <ul>
-                    <li><a href="#">Device Processor and CodeName</a></li>
-                    <li><a href="#">Selecting Perfect Kernel Source Code</a></li></ul>
-                <li><a href="#">Choosing Perfect Toolchain</a></li>
-                <li><a href="#">The Compiling Process</a></li>
-                    </li>
-                  </ul>
-                </li>
-                <li><a href="#">Testing Your Kernel</a></li>
-              </ul>
-			</nav>
-
+                <ul>
+                <li><a href="./04.html#1">What Is Kali Chroot</a></li>
+                <li><a href="./04.html#2">Requirements</a></li>
+                <li><a href="./04.html#3">Setup</a></li>
+                </ul>
+            </nav>
+	</div>
+		<!-- BLOG BODY-->
+		<div class="content three_quarter"> 
 			<!-- ################################################################################################ -->
-		  </div>
+			<h2>&nbsp;</h2>
+			<h1><a name="1">What is Kali Chroot</a></h1>
+			<img class="imgr borderedbox inspace-5" src="./images/files/OS.gif" alt="">
+			<p><b>Kali Chroot:</b> Chroot is essentially a full Kali Linux installation that allows Android to share network, storage, and other resources.
+				<br> To manage Chroot we usually use Kali Chroot Manager.</p>
+			<p>The NetHunter chroot manager allows you to download and install a Kali Linux chroot (if one does not already exist),
+				 backup and restore a chroot, as well as remove an existing chroot. In addition, one can install various Kali Linux metapackages as required.</p>
+			<p>In general, the “kali-nethunter” metapackage contains everything needed to run NetHunter, so be sure to only add extra metapackages if they’re really needed, 
+				especially if disk space is at a premium. To get a general idea of the disk space required for each of the metapackages, 
+				refer to the <a href="https://www.kali.org/blog/kali-linux-metapackages/">Kali Linux Metapackages blog post.</a></p>
+				<style>
+					/* Blog Post Side By Side Photos */
+					* {box-sizing: border-box;}
 
-	<!-- BLOG BODY-->
-	<div class="content three_quarter"> 
-		<!-- ################################################################################################ -->
-		<h1>What is Kali CHROOT?</h1>
-		<img class="imgr borderedbox inspace-5" src="../images/live/imgr.gif" alt="">
-		<p>Aliquatjusto quisque nam consequat doloreet vest orna partur scetur portortis nam. Metadipiscing eget facilis elit sagittis felisi eger id justo maurisus convallicitur.</p>
-		<p>Dapiensociis <a href="#">temper donec auctortortis cumsan</a> et curabitur condis lorem loborttis leo. Ipsumcommodo libero nunc at in velis tincidunt pellentum tincidunt vel lorem.</p>
-		<img class="imgl borderedbox inspace-5" src="../images/live/imgl.gif" alt="">
-		<p>This is a W3C compliant free website template from <a href="https://www.os-templates.com/" title="Free Website Templates">OS Templates</a>. For full terms of use of this template please read our <a href="https://www.os-templates.com/template-terms">website template licence</a>.</p>
-		<p>You can use and modify the template for both personal and commercial use. You must keep all copyright information and credit links in the template and associated files. For more website templates visit our <a href="https://www.os-templates.com/">free website templates</a> section.</p>
-		<p>Portortornec condimenterdum eget consectetuer condis consequam pretium pellus sed mauris enim. Puruselit mauris nulla hendimentesque elit semper nam a sapien urna sempus.</p>
-		<div id="comments">
-		  <h2>Comments</h2>
-		  <ul>
-			<li>
-			  <article>
-				<header>
-				  <figure class="avatar"><img src="../images/live/avatar.png" alt=""></figure>
-				  <address>
-				  By <a href="#">A Name</a>
-				  </address>
-				  <time datetime="2045-04-06T08:15+00:00">Friday, 6<sup>th</sup> April 2045 @08:15:00</time>
-				</header>
-				<div class="comcont">
-				  <p>This is an example of a comment made on a post. You can either edit the comment, delete the comment or reply to the comment. Use this as a place to respond to the post or to share what you are thinking.</p>
-				</div>
-			  </article>
-			</li>
-			<li>
-			  <article>
-				<header>
-				  <figure class="avatar"><img src="../images/live/avatar.png" alt=""></figure>
-				  <address>
-				  By <a href="#">A Name</a>
-				  </address>
-				  <time datetime="2045-04-06T08:15+00:00">Friday, 6<sup>th</sup> April 2045 @08:15:00</time>
-				</header>
-				<div class="comcont">
-				  <p>This is an example of a comment made on a post. You can either edit the comment, delete the comment or reply to the comment. Use this as a place to respond to the post or to share what you are thinking.</p>
-				</div>
-			  </article>
-			</li>
-			<li>
-			  <article>
-				<header>
-				  <figure class="avatar"><img src="../images/live/avatar.png" alt=""></figure>
-				  <address>
-				  By <a href="#">A Name</a>
-				  </address>
-				  <time datetime="2045-04-06T08:15+00:00">Friday, 6<sup>th</sup> April 2045 @08:15:00</time>
-				</header>
-				<div class="comcont">
-				  <p>This is an example of a comment made on a post. You can either edit the comment, delete the comment or reply to the comment. Use this as a place to respond to the post or to share what you are thinking.</p>
-				</div>
-			  </article>
-			</li>
-		  </ul>
-		  <h2>Write A Comment</h2>
-		  <form action="#" method="post">
-			<div class="one_third first">
-			  <label for="name">Name <span>*</span></label>
-			  <input type="text" name="name" id="name" value="" size="22" required>
-			</div>
-			<div class="one_third">
-			  <label for="email">Mail <span>*</span></label>
-			  <input type="email" name="email" id="email" value="" size="22" required>
-			</div>
-			<div class="one_third">
-			  <label for="url">Website</label>
-			  <input type="url" name="url" id="url" value="" size="22">
-			</div>
-			<div class="block clear">
-			  <label for="comment">Your Comment</label>
-			  <textarea name="comment" id="comment" cols="25" rows="10"></textarea>
-			</div>
-			<div>
-			  <input type="submit" name="submit" value="Submit Form">
-			  &nbsp;
-			  <input type="reset" name="reset" value="Reset Form">
-			</div>
-		  </form>
-		</div>
-		<!-- ################################################################################################ -->
+					.img-container {
+					float: left;
+					width: 50%;
+					padding: 5px;
+					}
+					.clearfix::after {
+					content: "";
+					clear: both;
+					display: table;
+}
+				</style>
+				<div class="clearfix">
+					<center>
+					<div class="img-container">
+					  <img src="../posts/images/files/nethunter-chroot-01.png" alt="" style="width:50%">
+					</div>
+					<div class="img-container">
+					  <img src="../posts/images/files/nethunter-chroot-02.png" alt="" style="width:50%">
+					</div>
+					</center>
+				  </div>
+				  <h2>&nbsp;</h2>
+			<h1><a name="2">Requirements</a></h1>
+			<img class="imgl borderedbox inspace-5" src="../posts/images/files/KaliOS.png" alt="">
+			<p><b>Requirements</b> <br>1.Mind Presence<br>2.Rooted Mobile Device<br>3.SD Card<br>4.APPs2SD Pro Apk 
+				[<a href="https://www.apkmirror.com/apk/vicky-bonick/app2sd-pro-all-in-one-tool-root/">Download Link</a>]<br>
+				Suggested SD Card: SD UHS-I Memory Card 64GB. [If you use Full Kali FS]<br>
+				You can buy one at <a href="https://www.amazon.com/">Amazon.</a>
+			</p>
+			<h2>&nbsp;</h2>
+			<h1><a name="3">Setup</a></h1>
+			<p>Now the main process starts..</p>
+			<p>So firstly go to your Nethunter Chroot Manager and Stop Kali Chainroot. [If you have installed it already] 
+				<br>Now you need to install the <b>Apps2SD Pro</b> apk in our mobile device. <br> Download link provided in the requirements section above.</p>
+			<p>After Installation open the app and go to <b>Partition Tool </b>and part your SD Card in 2 partitions..
+				<br><b>FILE SYSTEM</b> of 1st partition will be <b>FAT32</b> and <b>FILE SYSTEM</b> of 2nd partition will be <b>EXT4.</b></p>
+			<center><img src="./images/files/PartitionTOOL.jpg" alt="" style="width:50%"></center>
+			<p><br>The 1st partition will be use for storing media and other stuff and the 2nd partition will be use for storing your Nethunter Files and Other Apps.
+				<br>If you use Full Kali FS then make 2nd partition bigger eg. 30-35GB
+				<br>After doing partition, go to <b>Link Apps to SD Card</b> and create mount script for your second partition.. 
+				<br>You don't need to do anything the app will prompt you on it's own. Just choose the options according to you.</p>
+			<p>After creating Mount script, get back to main menu and then go to <b>Folder Mount Option</b> and Tap on the + icon in it. 
+				<br>After that an interface like the image will be in front of you, then fill it like the image...</p>
+			<center><img src="./images/files/FS_MOUNT.jpg" alt="" style="width:50%"></center>
+			<p>Name: <b>Nethunter</b> 
+				<br>Source Folder: <b>/data/local/nhsystem</b>
+				<br>Destination Folder: <b>/data/sdext4/.Nethunter</b>
+				<br>Adding "." in front of folder Name will prevent it from Media Scan
+				<br><b>Also Select the OPTIONS same as Image attached above!</b></p>
+			<p>Save the mount file by pressing "OK", Now toggle the ON/OFF button and select Move Data and wait until it's done. 
+				<br><b>Note: To make this process fast don't install Chroot at first.</b> Flash is after you setup folder mount and enable it.</p>
+			<p><b>BOOM!</b> Now your Chroot is in SD card just go to Kali Chroot Manager and Start it and ENJOY HACKING.</p>
+			<p>In case your Nethunter app show CHROOT not Installed after reboot or something. 
+				<br>Go to Apps2SD and then Folder Mount and press on 3 Dots and tap on Mount ONLY(ALL) 
+				<br>And do a soft reboot and then go to Kali Chroot Manager and start the Chainroot.</p>
+
+			<h2>&nbsp;</h2>
+			<p><b>If you like it, Don't forget to drop a comment below. ❤️</b></p>
+
+		<!-- ##############################  COMMENTS  ############################################ -->
+			<div class="commentbox"></div>
+			<script src="https://unpkg.com/commentbox.io/dist/commentBox.min.js"></script>
+			<script>commentBox('5749850733805568-proj')</script>
+		  <!-- ################################################################################################ -->
+		  <!-- / main body -->
+		  <div class="clear"></div>
+		</main>
 	  </div>
-	  <!-- ################################################################################################ -->
-	  <!-- / main body -->
-	  <div class="clear"></div>
-	</main>
-  </div>
 
 <footer id="footer" class="hoc clear"> 
 <div class="center btmspace-50">
