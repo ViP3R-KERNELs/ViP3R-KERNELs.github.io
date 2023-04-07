@@ -187,49 +187,12 @@
 					<h1>undefined reference to 'stpcpy' </h1>
 					
 					This is caused by a libcall optimization added in Clang 12 that optimizes certain basic `sprintf` calls into `stpcpy` calls. The correct fix for this is to cherry-pick <a href="https://github.com/kdrag0n/proton_zf6/commit/cec73f0775526">["lib/string.c: implement stpcpy"]</a>, which adds a simple implementation of `stpcpy` to the kernel so that Clang can use it.</p>
-
-
-		<div id="comments">
-		  <h2>Comments</h2>
-		  <ul>
-			<li>
-			  <article>
-				<header>
-				  <figure class="avatar"><img src="../images/live/avatar.png" alt=""></figure>
-				  <address>
-				  By <a href="#">Testers</a>
-				  </address>
-				  <time datetime="2023-02-27T02:44+00:00">Monday, 27<sup>th</sup> Feb 2023 @02:44:00</time>
-				</header>
-				<div class="comcont">
-				  <p>This is an example of a comment made on a post. You can either edit the comment, delete the comment or reply to the comment. Use this as a place to respond to the post or to share what you are thinking.</p>
-				</div>
-			  </article>
-			</li>
-		  <h2>Write A Comment</h2>
-		  <form action="" method="post">
-			<div class="one_third first">
-			  <label for="name">Name <span>*</span></label>
-			  <input type="text" name="name" id="name" value="" size="22" required>
-			</div>
-			<div class="one_third">
-			  <label for="email">Email <span>*</span></label>
-			  <input type="email" name="email" id="email" value="" size="22" required>
-			</div>
-			<div class="block clear">
-			  <label for="comment">Your Comment</label>
-			  <textarea name="comment" id="comment" cols="25" rows="10"></textarea>
-			</div>
-			<div>
-			  <input type="submit" name="submit" value="Submit Form">
-			  &nbsp;
-			  <input type="reset" name="reset" value="Reset Form">
-			</div>
-		  </form>
-		</div>
-		<!-- ################################################################################################ -->
-	  </div>
-	  <!-- ################################################################################################ -->
+					
+			<!-- ##############################  COMMENTS  ############################################ -->
+			<div class="commentbox"></div>
+			<script src="https://unpkg.com/commentbox.io/dist/commentBox.min.js"></script>
+			<script>commentBox('5749850733805568-proj')</script>
+		  <!-- ################################################################################################ -->
 	  <!-- / main body -->
 	  <div class="clear"></div>
 	</main>
