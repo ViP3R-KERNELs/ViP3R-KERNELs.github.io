@@ -316,7 +316,7 @@ input:focus, textarea:focus, *:required:focus{border-color:#41C379;}
 .overlay.light{color:#474747;}
 .overlay.light::after{background-color:rgba(255,255,255,.7);}
 
-.btn, .btn.inverse:hover{color:#FFFFFF; background-color:#41C379; border-color:#41C379;}
+.btn, .btn.inverse:hover{color:#FFFFFF; background-color:#02d9ff; border-color:#41c3c3;}
 .btn:hover, .btn.inverse{color:inherit; background-color:transparent; border-color:inherit;}
 
 .imgover:hover::before{background-color:rgba(0,0,0,.55);}
@@ -331,7 +331,7 @@ input:focus, textarea:focus, *:required:focus{border-color:#41C379;}
 .row4{color:#C1C2C4; background-color:#323639;}
 .row5, .row5 a{color:#C1C2C4; background-color:#2A2D34;}
 
-.coloured{color:#FFFFFF; background:linear-gradient(90deg, #41C379, #37AE6A);}
+.coloured{color:#FFFFFF; background:linear-gradient(90deg, #000000, #e8eb5b);}
 
 
 /* Header */
