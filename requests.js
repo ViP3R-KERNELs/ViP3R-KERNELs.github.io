@@ -5,12 +5,10 @@ var chat_id = 798615127;
 var Uname, Umessage, Udevice, Utelegram;
 var ready = function () {
     Uname = document.getElementById("_Name").value;
+    Umessage = document.getElementById("_Message").value;
     Udevice = document.getElementById("_Device").value;
-    Uos = document.getElementById("_OS").value;
-    UKerVer = document.getElementById("_KernelVer").value;
-    UAndVer = document.getElementById("_AndVer").value;
     Utelegram = document.getElementById("_TelegramID").value;
-    message = "Name: " + Uname + "\nDevice: " + Udevice + "\nOS: " + Uos + "\nKernel Version:" + UKerVer + "\nAndroid Version:" + UAndVer + "\nTelegramID: "+ "@" + Utelegram;
+    message = "Name: " + Uname + "\nMessage: " + Umessage + "\nDevice: " + Udevice + "\nTelegramID: "+ "@" + Utelegram;
 };
 var requests = function () {
     ready();
@@ -32,10 +30,8 @@ var requests = function () {
         console.log(response);
     });
     document.getElementById("_Name").value = "";
+    document.getElementById("_Message").value = "";
     document.getElementById("_Device").value = "";
-    document.getElementById("_OS").value = "";
     document.getElementById("_TelegramID").value = "";
-    document.getElementById("_KernelVer").value = "";
-    document.getElementById("_AndVer").value = "";
     return false;
 };
