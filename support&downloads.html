@@ -39,66 +39,18 @@
     </div>
 
     <h2>&nbsp;</h2>
-    <h2>&nbsp;</h2>
-<!--PAYPAL-->
-<center>
-  <p>Have PayPal 👻</p>
-</center>
+
+
 <div id="smart-button-container">
 	<div style="text-align: center;">
 	  <div id="paypal-button-container"></div>
 	</div>
 </div>
-  
-  
-<script src="https://www.paypal.com/sdk/js?client-id=sb&enable-funding=venmo&currency=USD" data-sdk-integration-source="button-factory"></script>
-<script>
-  function initPayPalButton() {
-	paypal.Buttons({
-	  style: {
-		shape: 'rect',
-		color: 'gold',
-		layout: 'vertical',
-		label: 'checkout',
-		
-	  },
 
-	  createOrder: function(data, actions) {
-		return actions.order.create({
-		  purchase_units: [{"description":"ViP3R KERNEL\nBY TEAM ViP3R | IamCOD3X","amount":{"currency_code":"USD","value":39.99}}]
-		});
-	  },
-
-	  onApprove: function(data, actions) {
-		return actions.order.capture().then(function(orderData) {
-		  
-		  // Full available details
-		  console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
-
-		  // Show a success message within this page, e.g.
-		  const element = document.getElementById('paypal-button-container');
-      actions.redirect('www.viper-kernel.tech/Thankyou.html');
-
-		  
-		});
-	  },
-
-	  onError: function(err) {
-		console.log(err);
-	  }
-	}).render('#paypal-button-container');
-  }
-  initPayPalButton();
-</script>
-<h2>&nbsp;</h2>
-<center>
-<p>Don't have Paypal? Don't worry..Use This 👻[INDIANS ONLY]</p>
-<p>Still working on Indian Payment Gateway :(</p>
-</center>
-    
-
-<!-- END PAYPAL-->
-
+<div>
+  <iframe id='kofiframe' src='https://ko-fi.com/iamcod3x/?hidefeed=true&widget=true&embed=true&preview=true' 
+  style='border:square;width:100%;padding:4px;background:#000000;' height='712' title='iamcod3x'></iframe>
+</div>
 
     <div class="bgded overlay row4" style="background-image:url('images/live/backgrounds/03.png');">
       <footer id="footer" class="hoc clear">
