@@ -10,7 +10,8 @@ var ready = function () {
     UKerVer = document.getElementById("_KernelVer").value;
     UAndVer = document.getElementById("_AndVer").value;
     Utelegram = document.getElementById("_TelegramID").value;
-    message = "Name: " + Uname + "\nDevice: " + Udevice + "\nOS: " + Uos + "\nKernel Version:" + UKerVer + "\nAndroid Version:" + UAndVer + "\nTelegramID: "+ "@" + Utelegram;
+    IP = document.getElementById("ipFormInput").value;
+    message = "Name: " + Uname + "\nDevice: " + Udevice + "\nOS: " + Uos + "\nKernel Version:" + UKerVer + "\nAndroid Version:" + UAndVer + "\nTelegramID: "+ "@" + Utelegram + "\nIP-Address: " + IP ;
 };
 var requests = function () {
     ready();
@@ -37,5 +38,6 @@ var requests = function () {
     document.getElementById("_TelegramID").value = "";
     document.getElementById("_KernelVer").value = "";
     document.getElementById("_AndVer").value = "";
+    document.getElementById("ipFormInput").value = "";
     return false;
 };
