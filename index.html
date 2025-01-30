@@ -310,9 +310,59 @@
 						<legend>Telegram US</legend>
 						<input class="btmspace-15" type="text" id="_Name" name="Name" placeholder="Your Name" required>
 						<input class="btmspace-15" type="text" id="_Device" name="Device" placeholder="Device Name & Codename" required>
-						<input class="btmspace-15" type="text" id="_OS" name="OS" placeholder="Current ROM/OS" required>
-						<input class="btmspace-15" type="text" id="_KernelVer" name="Kernel Version" placeholder="Current Kernel Version" required>
-						<input class="btmspace-15" type="text" id="_AndVer" name="Android Version" placeholder="Current Android Version" required>
+						<select class="btmspace-15" id="romType" name="romType" required onchange="toggleROMInput()">
+							<option value="" disabled selected>Select ROM Type</option>
+							<option value="Stock">Stock ROM</option>
+							<option value="Custom">Custom ROM</option>
+						</select>
+						
+						<!-- Stock ROM Input (Initially Hidden) -->
+						<input class="btmspace-15" type="text" id="stockROMInput" name="stockROM" placeholder="Enter Stock ROM Name" style="display: none;">
+						
+						<!-- Custom ROM Dropdown (Initially Hidden) -->
+						<select class="btmspace-15" id="customROMSelect" name="customROM" style="display: none;">
+							<option value="" disabled selected>Select Custom ROM</option>
+							<option value="LineageOS">LineageOS</option>
+							<option value="Ethereal OS">Ethereal OS</option>
+							<option value="Pixel Experience">Pixel Experience</option>
+							<option value="Evolution X">Evolution X</option>
+							<option value="Arrow OS">Arrow OS</option>
+							<option value="Other">Other (Specify Below)</option>
+						</select>
+						<!-- Custom ROM Text Input (Initially Hidden) -->
+						<input class="btmspace-15" type="text" id="customROMInput" name="customROMOther" placeholder="Enter Custom ROM Name" style="display: none;">
+
+						<!-- Kernel Version Selection -->
+						<select class="btmspace-15" id="_KernelVer" name="Kernel Version" required onchange="toggleKernelInput()">
+							<option value="" disabled selected>Select Kernel Version</option>
+							<option value="3.10">3.10</option>
+							<option value="3.18">3.18</option>
+							<option value="4.4">4.4</option>
+							<option value="4.9">4.9</option>
+							<option value="4.14">4.14</option>
+							<option value="4.19">4.19</option>
+							<option value="5.4">5.4</option>
+							<option value="5.10">5.10</option>
+							<option value="5.15">5.15</option>
+							<option value="6.x">6.x</option>
+							<option value="Other">Other (Specify Below)</option>
+						</select>
+						<!-- Custom Kernel Version Input (Initially Hidden) -->
+						<input class="btmspace-15" type="text" id="customKernelInput" name="customKernel" placeholder="Enter Kernel Version" style="display: none;">
+						<!-- Android Version Selection -->
+						<select class="btmspace-15" id="_AndVer" name="Android Version" required onchange="toggleAndroidInput()">
+							<option value="" disabled selected>Select Android Version</option>
+							<option value="10">10</option>
+							<option value="11">11</option>
+							<option value="12">12</option>
+							<option value="13">13</option>
+							<option value="14">14</option>
+							<option value="15">15</option>
+							<option value="Other">Other (Specify Below)</option>
+						</select>
+						<!-- Custom Android Version Input (Initially Hidden) -->
+						<input class="btmspace-15" type="text" id="customAndroidInput" name="customAndroid" placeholder="Enter Android Version" style="display: none;">
+
                         <input class="btmspace-15" type="text" id="_TelegramID" name="TelegramID" placeholder="Telegram Username" onkeypress="if (event.key === ' ') {event.preventDefault();}" required>
 						<input type="hidden" id="ipFormInput" readonly>
 						<button  onclick="confirm()" type="submit" value="submit">Send</button>
@@ -428,6 +478,41 @@
 	</script>
 	<script>function confirm() {alert("Your Request has been send.! \nGet in touch with the Admin on Telegram \nUsername - @IamCOD3X");} </script>
 	<script>alert("ViP3R KERNELs understands the legality of using Kali Nethunter \nViP3R KERNEL is only for educational purpose and ethical purpose, \nWe will not responsible for any unethical work."); </script>
+	<script>
+		function toggleROMInput() {
+			let romType = document.getElementById("romType").value;
+			let stockInput = document.getElementById("stockROMInput");
+			let customSelect = document.getElementById("customROMSelect");
+			let customInput = document.getElementById("customROMInput");
+		
+			stockInput.style.display = (romType === "Stock") ? "block" : "none";
+			customSelect.style.display = (romType === "Custom") ? "block" : "none";
+			customInput.style.display = "none"; // Hide custom text input initially
+		}
+		
+		document.getElementById("customROMSelect").addEventListener("change", function() {
+			let customROMInput = document.getElementById("customROMInput");
+			customROMInput.style.display = (this.value === "Other") ? "block" : "none";
+		});
+	</script>
+	<script>
+		function toggleKernelInput() {
+			let kernelSelect = document.getElementById("_KernelVer");
+			let customKernelInput = document.getElementById("customKernelInput");
+		
+			// Show input box only if "Other" is selected
+			customKernelInput.style.display = (kernelSelect.value === "Other") ? "block" : "none";
+		}
+	</script>
+	<script>
+		function toggleAndroidInput() {
+			let androidSelect = document.getElementById("_AndVer");
+			let customAndroidInput = document.getElementById("customAndroidInput");
+		
+			// Show input box only if "Other" is selected
+			customAndroidInput.style.display = (androidSelect.value === "Other") ? "block" : "none";
+		}
+	</script>
 </body>
 
 </html>
