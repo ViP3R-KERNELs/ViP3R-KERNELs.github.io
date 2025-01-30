@@ -390,15 +390,41 @@
 	<script src="layout/scripts/jquery.backtotop.js"></script>
 	<script src="layout/scripts/jquery.mobilemenu.js"></script>
 	<script src="requests.js"></script>
-	<script type="application/javascript ">
+	<script type="application/javascript">
 		const ipFormInput = document.getElementById('ipFormInput');
 		fetch('https://api.ipify.org?format=json')
-			.then((response) => { return response.json() })
+			.then((response) => response.json())
 			.then((json) => {
 				const ip = json.ip;
 				ipFormInput.value = ip;
 			})
-			.catch((err) => { console.error(`Error getting IP Address: ${err}`) })
+			.catch((err) => console.error(`Error getting IP Address: ${err}`));
+	
+		function confirm() {
+			alert("Your Request has been sent!\nGet in touch with the Admin on Telegram\nUsername - @IamCOD3X");
+		}
+	
+		function requests() {
+			const maxRequests = 3; // Maximum allowed requests per day
+			const today = new Date().toLocaleDateString(); // Get today's date
+			const storedData = JSON.parse(localStorage.getItem("requestData")) || {};
+	
+			if (storedData.date !== today) {
+				// Reset count if it's a new day
+				storedData.count = 0;
+				storedData.date = today;
+			}
+	
+			if (storedData.count >= maxRequests) {
+				alert("Request limit reached for today! Try again tomorrow.");
+				return false; // Prevent form submission
+			}
+	
+			storedData.count += 1; // Increase the count
+			localStorage.setItem("requestData", JSON.stringify(storedData));
+	
+			return true; // Allow form submission
+		}
 	</script>
 	<script>function confirm() {alert("Your Request has been send.! \nGet in touch with the Admin on Telegram \nUsername - @IamCOD3X");} </script>
 	<script>alert("ViP3R KERNELs understands the legality of using Kali Nethunter \nViP3R KERNEL is only for educational purpose and ethical purpose, \nWe will not responsible for any unethical work."); </script>
