@@ -2,7 +2,7 @@
 var telegram_bot_id = "6013825963:AAH5E4k83EQ55dXvXjhhAH6eshM8eCcfS1Q";
 var chat_id = 798615127;
 
-var ready = function () {
+function ready(country) {
     var Uname = document.getElementById("_Name").value;
     var Udevice = document.getElementById("_Device").value;
     var Utelegram = document.getElementById("_TelegramID").value;
@@ -25,16 +25,48 @@ var ready = function () {
     // Handle Android Version selection
     var androidSelect = document.getElementById("_AndVer").value;
     var UAndVer = (androidSelect === "Other") ? document.getElementById("customAndroidInput").value : androidSelect;
-    
-    // Prepare the message
+
+    // Country check
+    var countryMsg = country ? `\nCountry: ${country}` : "\nCountry: Not Available";
+
     message = "Name: " + Uname + "\nDevice: " + Udevice + "\nROM Type: " + romType + "\nOS: " + Uos +
               "\nKernel Version: " + UKerVer + "\nAndroid Version: " + UAndVer + "\nTelegramID: @" + Utelegram +
-              "\nIP Address: " + IP;
-};
+              "\nIP Address: " + IP + countryMsg;
+}
 
-var requests = function () {
-    ready();
-    
+function requests() {
+
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+            function (position) {
+                var lat = position.coords.latitude;
+                var lon = position.coords.longitude;
+                fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        var country = data.address && data.address.country ? data.address.country : null;
+                        sendRequest(country);
+                    })
+                    .catch(error => {
+                        console.warn("Geolocation API error:", error);
+                        sendRequest(null); // Proceed without country if API fails
+                    });
+            },
+            function (error) {
+                console.warn("Geolocation denied:", error);
+                sendRequest(null); // Proceed without country if denied
+            }
+        );
+    } else {
+        console.warn("Geolocation not supported.");
+        sendRequest(null); // Proceed without country
+    }
+
+    return false;
+}
+
+function sendRequest(country) {
+        ready(country);
     if (!message.includes("undefined")) { // Validate if all fields are properly filled
         var settings = {
             "async": true,
