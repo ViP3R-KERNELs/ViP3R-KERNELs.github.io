@@ -506,6 +506,22 @@
             // Display the "UPI copied" message
             alert("UPI copied: " + upiId);
         }
+		
+		// Disable AdBlocker Message POP-UP 
+		document.addEventListener("DOMContentLoaded", function() {
+			setTimeout(function() {
+				let ad = document.createElement("div");
+				ad.innerHTML = "&nbsp;";
+				ad.className = "adsbox";
+				document.body.appendChild(ad);
+				window.setTimeout(function() {
+					if (ad.offsetHeight === 0) {
+						alert("We noticed you're using an ad blocker. Ads help keep this site free. Please consider disabling it. 😊");
+					}
+					ad.remove();
+				}, 100);
+			}, 1000);
+		});
     </script>
 </body>
 
