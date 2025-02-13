@@ -19,7 +19,7 @@
 	<!-- ################################################################################################ -->
 
 	<!-- Top Background Image Wrapper -->
-	<div class="bgded overlay" style="background-image:url('images/live/backgrounds/03.png');">
+	<div class="bgded overlay" style="background-image:url('images/live/backgrounds/background_top.png');">
 		<!-- ################################################################################################ -->
 		<header id="header" class="hoc clear">
 			<!-- ################################################################################################ -->
@@ -55,14 +55,11 @@
 			<!-- ################################################################################################ -->
 			<div id="searchform">
 				<div>
-					<form action="#" method="post">
-						<fieldset>
-							<legend>Quick Search:</legend>
-							<input type="text" placeholder="Enter Device Name&hellip;">
-							<button type="submit"><i class="fas fa-search"></i></button>
-						</fieldset>
+					<form onsubmit="return false;">
+						<input type="text" id="searchInput" placeholder="Search by Codename or Device Name.." onkeyup="filterTable()">
 					</form>
 				</div>
+				<div id="deviceTableContainer">Loading supported devices...</div>
 			</div>
 			<!-- ################################################################################################ -->
 		</section>
@@ -80,9 +77,10 @@
 			</article>
 			<!-- ################################################################################################ -->
 		</div>
+	</div>
 	<!-- End Top Background Image Wrapper -->
 	<!-- ################################################################################################ -->
-
+	
 	<div class="wrapper row3">
 		<main class="hoc container clear">
 			<!-- main body -->
@@ -285,7 +283,7 @@
 	</div>
 	<!-- ################################################################################################ -->
 
-	<div class="bgded overlay row4" style="background-image:url('images/live/backgrounds/03.png');">
+	<div class="bgded overlay row4" style="background-image:url('images/live/backgrounds/background_bottom.png');">
 		<footer id="footer" class="hoc clear">
 			<!-- ################################################################################################ -->
 			<div class="center btmspace-50">
@@ -525,6 +523,54 @@
 				}, 100);
 			}, 1000);
 		});
+		
+		// Search box
+		// Function to Load Table from Another Page
+		function loadTable() {
+			fetch("https://vip3r-kernels.github.io/pages/SupportedDevice.html")  
+			.then(response => response.text())
+			.then(data => {
+				console.log("Fetched HTML:", data); // Debugging
+				let parser = new DOMParser();
+				let doc = parser.parseFromString(data, 'text/html');
+				console.log("Parsed Document:", doc.body.innerHTML); // Debugging
+
+				let table = doc.querySelector("table");
+				if (table) {
+					document.getElementById("deviceTableContainer").innerHTML = table.outerHTML;
+				} else {
+					console.error("Error: Table not found in fetched content!");
+					document.getElementById("deviceTableContainer").innerHTML = "Error: Table not found!";
+				}
+			})
+			.catch(error => {
+				console.error("Error loading the table:", error);
+				document.getElementById("deviceTableContainer").innerHTML = "Failed to load supported devices.";
+			});
+		}
+
+		// Function to Filter the Table
+		function filterTable() {
+			let searchQuery = document.getElementById("searchInput").value.toLowerCase();
+			let table = document.getElementById("deviceTableContainer").querySelector("table");
+			if (!table) return;
+
+			let rows = table.getElementsByTagName("tr");
+
+			for (let i = 1; i < rows.length; i++) { // Start from 1 to skip headers
+				let codename = rows[i].getElementsByTagName("td")[0].textContent.toLowerCase();
+				let deviceName = rows[i].getElementsByTagName("td")[1].textContent.toLowerCase();
+
+				if (codename.includes(searchQuery) || deviceName.includes(searchQuery)) {
+					rows[i].style.display = "";
+				} else {
+					rows[i].style.display = "none";
+				}
+			}
+		}
+
+		// Load the table on page load
+		document.addEventListener("DOMContentLoaded", loadTable);
     </script>
 </body>
 
