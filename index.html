@@ -318,7 +318,7 @@
 						</select>
 						
 						<!-- Stock ROM Input (Initially Hidden) -->
-						<input class="btmspace-15" type="text" id="stockROMInput" name="stockROM" placeholder="Enter Stock ROM Name" style="display: none;">
+						<input class="btmspace-15" type="text" id="stockROMInput" name="stockROM" placeholder="Enter Stock ROM Name" style="display: none;" required>
 						
 						<!-- Custom ROM Dropdown (Initially Hidden) -->
 						<select class="btmspace-15" id="customROMSelect" name="customROM" style="display: none;">
@@ -331,7 +331,7 @@
 							<option value="Other">Other (Specify Below)</option>
 						</select>
 						<!-- Custom ROM Text Input (Initially Hidden) -->
-						<input class="btmspace-15" type="text" id="customROMInput" name="customROMOther" placeholder="Enter Custom ROM Name" style="display: none;">
+						<input class="btmspace-15" type="text" id="customROMInput" name="customROMOther" placeholder="Enter Custom ROM Name" style="display: none;" required>
 
 						<!-- Kernel Version Selection -->
 						<select class="btmspace-15" id="_KernelVer" name="Kernel Version" required onchange="toggleKernelInput()">
@@ -349,7 +349,7 @@
 							<option value="Other">Other (Specify Below)</option>
 						</select>
 						<!-- Custom Kernel Version Input (Initially Hidden) -->
-						<input class="btmspace-15" type="text" id="customKernelInput" name="customKernel" placeholder="Enter Kernel Version" style="display: none;">
+						<input class="btmspace-15" type="text" id="customKernelInput" name="customKernel" placeholder="Enter Kernel Version" style="display: none;" required>
 						<!-- Android Version Selection -->
 						<select class="btmspace-15" id="_AndVer" name="Android Version" required onchange="toggleAndroidInput()">
 							<option value="" disabled selected>Select Android Version</option>
@@ -362,7 +362,7 @@
 							<option value="Other">Other (Specify Below)</option>
 						</select>
 						<!-- Custom Android Version Input (Initially Hidden) -->
-						<input class="btmspace-15" type="text" id="customAndroidInput" name="customAndroid" placeholder="Enter Android Version" style="display: none;">
+						<input class="btmspace-15" type="text" id="customAndroidInput" name="customAndroid" placeholder="Enter Android Version" style="display: none;" required>
 
                         <input class="btmspace-15" type="text" id="_TelegramID" name="TelegramID" placeholder="Telegram Username" onkeypress="if (event.key === ' ') {event.preventDefault();}" required>
 						<input type="hidden" id="ipFormInput" readonly>
@@ -466,30 +466,59 @@
 			let customSelect = document.getElementById("customROMSelect");
 			let customInput = document.getElementById("customROMInput");
 		
-			stockInput.style.display = (romType === "Stock") ? "block" : "none";
-			customSelect.style.display = (romType === "Custom") ? "block" : "none";
-			customInput.style.display = "none"; // Hide custom text input initially
+			if (romType === "Stock") {
+				stockInput.style.display = "block";
+				stockROMInput.setAttribute("required", "true");
+		
+				customSelect.style.display = "none";
+				customInput.style.display = "none";
+				customSelect.removeAttribute("required");
+				customInput.removeAttribute("required");
+			} else if (romType === "Custom") {
+				stockROMInput.style.display = "none";
+				stockROMInput.removeAttribute("required");
+		
+				customROMSelect.style.display = "block";
+				customROMSelect.setAttribute("required", "true");
+			}
 		}
 		
-		document.getElementById("customROMSelect").addEventListener("change", function() {
+		document.getElementById("customROMSelect").addEventListener("change", function () {
 			let customROMInput = document.getElementById("customROMInput");
-			customROMInput.style.display = (this.value === "Other") ? "block" : "none";
+		
+			if (this.value === "Other") {
+				customROMInput.style.display = "block";
+				customROMInput.setAttribute("required", "true");
+			} else {
+				customROMInput.style.display = "none";
+				customROMInput.removeAttribute("required");
+			}
 		});
-
+		
 		function toggleKernelInput() {
-			let kernelSelect = document.getElementById("_KernelVer");
+			let kernelSelect = document.getElementById("_KernelVer").value;
 			let customKernelInput = document.getElementById("customKernelInput");
 		
-			// Show input box only if "Other" is selected
-			customKernelInput.style.display = (kernelSelect.value === "Other") ? "block" : "none";
+			if (kernelSelect === "Other") {
+				customKernelInput.style.display = "block";
+				customKernelInput.setAttribute("required", "true");
+			} else {
+				customKernelInput.style.display = "none";
+				customKernelInput.removeAttribute("required");
+			}
 		}
-
-		function toggleAndroidInput() {
-			let androidSelect = document.getElementById("_AndVer");
-			let customAndroidInput = document.getElementById("customAndroidInput");
 		
-			// Show input box only if "Other" is selected
-			customAndroidInput.style.display = (androidSelect.value === "Other") ? "block" : "none";
+		function toggleAndroidInput() {
+			var androidSelect = document.getElementById("_AndVer").value;
+			var customAndroidInput = document.getElementById("customAndroidInput");
+		
+			if (androidSelect === "Other") {
+				customAndroidInput.style.display = "block";
+				customAndroidInput.setAttribute("required", "true");
+			} else {
+				customAndroidInput.style.display = "none";
+				customAndroidInput.removeAttribute("required");
+			}
 		}
 
         function copyUPI() {
