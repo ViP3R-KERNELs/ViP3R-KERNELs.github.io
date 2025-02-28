@@ -580,21 +580,40 @@
 
 		// Function to Filter the Table
 		function filterTable() {
-			let searchQuery = document.getElementById("searchInput").value.toLowerCase();
-			let table = document.getElementById("deviceTableContainer").querySelector("table");
-			if (!table) return;
-
+			let searchQuery = document.getElementById("searchInput").value.toLowerCase().trim();
+			let tableContainer = document.getElementById("deviceTableContainer");
+			let table = tableContainer.querySelector("table");
+		
+			if (!table) {
+				console.error("Table not found!");
+				return;
+			}
+		
 			let rows = table.getElementsByTagName("tr");
-
-			for (let i = 1; i < rows.length; i++) { // Start from 1 to skip headers
-				let codename = rows[i].getElementsByTagName("td")[0].textContent.toLowerCase();
-				let deviceName = rows[i].getElementsByTagName("td")[1].textContent.toLowerCase();
-
+			let hasMatch = false;
+		
+			for (let i = 1; i < rows.length; i++) { // Skip header row
+				let cells = rows[i].getElementsByTagName("td");
+				if (cells.length < 3) continue; // Ensure the row has enough columns
+		
+				let codename = cells[1].textContent.trim().toLowerCase(); // Codename column
+				let deviceName = cells[2].textContent.trim().toLowerCase(); // Device Name column
+		
 				if (codename.includes(searchQuery) || deviceName.includes(searchQuery)) {
-					rows[i].style.display = "";
+					rows[i].style.display = "table-row"; // Show row
+					hasMatch = true;
 				} else {
-					rows[i].style.display = "none";
+					rows[i].style.display = "none"; // Hide row
 				}
+			}
+		
+			// Ensure the table and container are visible when matches are found
+			if (hasMatch) {
+				table.style.display = "table";
+				tableContainer.style.display = "block";
+			} else {
+				table.style.display = "none";
+				tableContainer.style.display = "none";
 			}
 		}
 

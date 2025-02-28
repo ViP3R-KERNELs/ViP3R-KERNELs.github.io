@@ -47,14 +47,73 @@ File: Layout CSS
 #navwrapper #searchform{display:block; position:relative; float:right; height:58px; line-height:1; z-index:999; border-radius:10px 0;}
 #navwrapper #searchform::after{display:block; height:58px; line-height:58px; padding:0 15px; font-size:20px; font-family:"Font Awesome 5 Free"; font-weight:900; content:"\f002"/* fa-search */;}
 #navwrapper #searchform:hover::after, #navwrapper #searchform button{cursor:pointer;}
-#navwrapper #searchform > div{position:absolute; top:58px; right:0; width:280px; visibility:hidden; opacity:0/* Required for transition effect */;}
-#navwrapper #searchform:hover > div{visibility:visible; opacity:1/* Required for transition effect */;}
+
+/* Ensure only the search input field is affected by hover, not the entire div */
+#navwrapper #searchform > div:first-child {
+    position: absolute;
+    top: 58px;
+    right: 0;
+    width: 280px;
+    visibility: hidden;
+    opacity: 0; /* Hide search input initially */
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+#navwrapper #searchform:hover > div:first-child, 
+#navwrapper #searchform div:first-child:hover {
+    visibility: visible;
+    opacity: 1; /* Show search input when hovering */
+}
+
 #navwrapper #searchform form{display:block; position:relative;}
 #navwrapper #searchform form *{border:none;}
 #navwrapper #searchform input{display:block; width:100%; height:36px; padding:8px 40px 8px 10px; font-size:1rem;}
 #navwrapper #searchform ::placeholder{text-transform:capitalize;}
 #navwrapper #searchform button{display:block; position:absolute; top:3px; right:2px; height:30px; font-size:16px; line-height:1;}
 
+/* Ensure search results are positioned properly */
+#deviceTableContainer {
+    display: none;
+    position: absolute;
+    top: 170%; /* Push it below search bar */
+    right: 0;
+    width: auto; /* Adjust width */
+    background: white;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    max-height: 200px; /* Set max height for scrolling */
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+/* Show results when input is focused and has results */
+#searchInput:focus ~ #deviceTableContainer,
+#deviceTableContainer.show {
+    display: block;
+}
+
+/* Hide all rows initially */
+#deviceTableContainer tr {
+    display: none;
+}
+
+#deviceTableContainer table tr {
+    color: white; /* Default color */
+}
+
+#deviceTableContainer table tr[style*="display: table-row"] {
+    color: rgb(255, 174, 0); /* Change color of visible results */
+}
+
+/* Show matching rows */
+#deviceTableContainer tr.match {
+    display: table-row;
+}
+
+#deviceTable {
+    display: table; /* Ensure the table is visible */
+}
 
 /* Page Intro
 --------------------------------------------------------------------------------------------------------------- */
