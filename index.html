@@ -446,6 +446,7 @@
 	<script src="layout/scripts/jquery.backtotop.js"></script>
 	<script src="layout/scripts/jquery.mobilemenu.js"></script>
 	<script src="requests.js"></script>
+	<script src="search.js"></script>
 	<script type="application/javascript">
 		const ipFormInput = document.getElementById('ipFormInput');
 		fetch('https://api.ipify.org?format=json')
@@ -552,73 +553,6 @@
 				}, 100);
 			}, 1000);
 		});
-		
-		// Search box
-		// Function to Load Table from Another Page
-		function loadTable() {
-			fetch("https://www.viperkernels.com/pages/SupportedDevice.html")  
-			.then(response => response.text())
-			.then(data => {
-				console.log("Fetched HTML:", data); // Debugging
-				let parser = new DOMParser();
-				let doc = parser.parseFromString(data, 'text/html');
-				console.log("Parsed Document:", doc.body.innerHTML); // Debugging
-
-				let table = doc.querySelector("table");
-				if (table) {
-					document.getElementById("deviceTableContainer").innerHTML = table.outerHTML;
-				} else {
-					console.error("Error: Table not found in fetched content!");
-					document.getElementById("deviceTableContainer").innerHTML = "Error: Table not found!";
-				}
-			})
-			.catch(error => {
-				console.error("Error loading the table:", error);
-				document.getElementById("deviceTableContainer").innerHTML = "Failed to load supported devices.";
-			});
-		}
-
-		// Function to Filter the Table
-		function filterTable() {
-			let searchQuery = document.getElementById("searchInput").value.toLowerCase().trim();
-			let tableContainer = document.getElementById("deviceTableContainer");
-			let table = tableContainer.querySelector("table");
-		
-			if (!table) {
-				console.error("Table not found!");
-				return;
-			}
-		
-			let rows = table.getElementsByTagName("tr");
-			let hasMatch = false;
-		
-			for (let i = 1; i < rows.length; i++) { // Skip header row
-				let cells = rows[i].getElementsByTagName("td");
-				if (cells.length < 3) continue; // Ensure the row has enough columns
-		
-				let codename = cells[1].textContent.trim().toLowerCase(); // Codename column
-				let deviceName = cells[2].textContent.trim().toLowerCase(); // Device Name column
-		
-				if (codename.includes(searchQuery) || deviceName.includes(searchQuery)) {
-					rows[i].style.display = "table-row"; // Show row
-					hasMatch = true;
-				} else {
-					rows[i].style.display = "none"; // Hide row
-				}
-			}
-		
-			// Ensure the table and container are visible when matches are found
-			if (hasMatch) {
-				table.style.display = "table";
-				tableContainer.style.display = "block";
-			} else {
-				table.style.display = "none";
-				tableContainer.style.display = "none";
-			}
-		}
-
-		// Load the table on page load
-		document.addEventListener("DOMContentLoaded", loadTable);
     </script>
 </body>
 

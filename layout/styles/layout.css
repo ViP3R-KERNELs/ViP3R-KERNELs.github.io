@@ -85,6 +85,7 @@ File: Layout CSS
     max-height: 200px; /* Set max height for scrolling */
     overflow-y: auto;
     z-index: 1000;
+	transition: opacity 0.2s ease-in-out;
 }
 
 /* Show results when input is focused and has results */
