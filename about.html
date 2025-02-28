@@ -49,14 +49,11 @@
         <!-- ################################################################################################ -->
         <div id="searchform">
           <div>
-            <form action="#" method="post">
-              <fieldset>
-                <legend>Quick Search:</legend>
-                <input type="text" placeholder="Enter Device Name&hellip;">
-                <button type="submit"><i class="fas fa-search"></i></button>
-              </fieldset>
+            <form onsubmit="return false;">
+              <input type="text" id="searchInput" placeholder="Search by Codename or Device Name.." onkeyup="filterTable()">
             </form>
           </div>
+          <div id="deviceTableContainer">Loading supported devices...</div>
         </div>
         <!-- ################################################################################################ -->
       </section>
@@ -128,5 +125,6 @@
               </div>
         </main>
     </div>
+    <script src="search.js"></script>
   </body>
 </html>

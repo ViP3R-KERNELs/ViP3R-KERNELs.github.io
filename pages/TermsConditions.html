@@ -50,16 +50,13 @@
 		</nav>
 		<!-- ################################################################################################ -->
 		<div id="searchform">
-		  <div>
-			<form action="#" method="post">
-			  <fieldset>
-				<legend>Quick Search:</legend>
-				<input type="text" placeholder="Enter Device Name&hellip;">
-				<button type="submit"><i class="fas fa-search"></i></button>
-			  </fieldset>
-			</form>
-		  </div>
-		</div>
+				<div>
+					<form onsubmit="return false;">
+						<input type="text" id="searchInput" placeholder="Search by Codename or Device Name.." onkeyup="filterTable('searchInput', 'deviceTableContainer')">
+					</form>
+				</div>
+				<div id="deviceTableContainer">Loading supported devices...</div>
+			</div>
 		<!-- ################################################################################################ -->
 	  </section>
 	<h2>&nbsp;</h2>
@@ -227,7 +224,7 @@
 				<li><a class="faicon-youtube" href="https://www.youtube.com/@IAMCOD3X" target="_blank"><i class="fab fa-youtube"></i></a></li>
 				<li><a class="faicon-medium" href="https://www.medium.com/@IamCOD3X" target="_blank"><i class="fab fa-medium"></i></a></li>
 			</ul>
-			<p class="nospace">Build For Android with Love ❤️</p>
+			<p class="n<script src="../search.js"></script>ospace">Build For Android with Love ❤️</p>
 		  </div>
 </footer>
 </div>  
@@ -248,5 +245,6 @@
 		<script src="layout/scripts/jquery.min.js"></script>
 		<script src="layout/scripts/jquery.backtotop.js"></script>
 		<script src="layout/scripts/jquery.mobilemenu.js"></script>
+		<script src="../search.js"></script>
 </body>
 </html>
