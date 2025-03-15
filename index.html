@@ -459,8 +459,14 @@
 			})
 			.catch((err) => console.error(`Error getting IP Address: ${err}`));
 
-		function confirm() {alert("Your Request has been send.! \nGet in touch with the Admin on Telegram \nUsername - @IamCOD3X");} 
-		
+		function confirm() {
+			let userChoice = confirm("Your Request has been sent!\n Would you like to drop a 'HELLO' to Admin on Telegram now?");
+			
+			if (userChoice) {
+				window.open("https://t.me/IamCOD3X", "_blank"); // Opens the link in a new tab
+			}
+		}
+	
 		alert("ViP3R KERNELs understands the legality of using Kali Nethunter \nViP3R KERNEL is only for educational purpose and ethical purpose, \nWe will not responsible for any unethical work.");
 
 		function toggleROMInput() {
