@@ -364,7 +364,9 @@
 						<!-- Custom Android Version Input (Initially Hidden) -->
 						<input class="btmspace-15" type="text" id="customAndroidInput" name="customAndroid" placeholder="Enter Android Version" style="display: none;" required>
 
-                        <input class="btmspace-15" type="text" id="_TelegramID" name="TelegramID" placeholder="Telegram Username" onkeypress="if (event.key === ' ') {event.preventDefault();}" required>
+						<input class="btmspace-15" type="text" id="_TelegramID" name="TelegramID" placeholder="Telegram Username" onkeypress="if (event.key === ' ') {event.preventDefault();}" required>
+						<input class="btmspace-15" type="text" id="_ConfirmTelegramID" name="ConfirmTelegramID" placeholder="Re-enter Telegram Username" onkeypress="if (event.key === ' ') {event.preventDefault();}" required>
+						<p id="telegramError" style="color: red; font-size: 12px;"></p>
 						<input type="hidden" id="ipFormInput" readonly>
 						<button type="submit" value="submit">Send</button>
 						<p>Note: We do paid work. <br>Until you get a confirmation pop-up, the request hasn't been sent.</p>
