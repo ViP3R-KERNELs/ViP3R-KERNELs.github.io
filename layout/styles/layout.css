@@ -124,7 +124,7 @@ File: Layout CSS
 #pageintro .heading{margin-bottom:20px; font-size:4rem;}
 #pageintro p:first-of-type{margin:0 0 20px 0; text-transform:uppercase; font-size:1.6rem; letter-spacing:2px;}
 #pageintro p:last-of-type{font-size:1.2rem;}
-#pageintro footer{margin-top:50px;}
+#pageintro footer{margin-top:20px;}
 
 
 /* Content Area
@@ -527,6 +527,7 @@ table a, #comments a{background-color:inherit;}
 	#pageintro article{max-width:none;}
 	#pageintro .heading{font-size:2rem;}
 	#pageintro p:first-of-type{font-size:1rem;}
+	#pageintro p:nth-of-type(2) {font-size: 1rem;}
 
 	#introblocks > ul{margin:0 auto; max-width:348px;}/* Centre the items and restrict the width to the one_third grid element */
 	#introblocks > ul > li:nth-last-child(-n+3){margin-bottom:50px;}
