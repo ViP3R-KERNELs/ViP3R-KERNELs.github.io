@@ -1,6 +1,4 @@
-// Bot token and chat ID
-var telegram_bot_id = "6013825963:AAH5E4k83EQ55dXvXjhhAH6eshM8eCcfS1Q";
-var chat_id = 798615127;
+let message = "";
 
 function ready(country) {
     var Uname = document.getElementById("_Name").value;
@@ -29,9 +27,9 @@ function ready(country) {
     // Country check
     var countryMsg = country ? `\nCountry: ${country}` : "\nCountry: Not Available";
 
-    message = "Name: " + Uname + "\nDevice: " + Udevice + "\nROM Type: " + romType + "\nOS: " + Uos +
-              "\nKernel Version: " + UKerVer + "\nAndroid Version: " + UAndVer + "\nTelegramID: @" + Utelegram +
-              "\nIP Address: " + IP + countryMsg;
+    message = `Name: ${Uname}\nDevice: ${Udevice}\nROM Type: ${romType}\nOS: ${Uos}` +
+                `\nKernel Version: ${UKerVer}\nAndroid Version: ${UAndVer}\nTelegramID: @${Utelegram}` +
+                `\nIP Address: ${IP}${countryMsg}`;
 }
 
 function requests() {
@@ -66,46 +64,53 @@ function requests() {
 }
 
 function sendRequest(country) {
-        ready(country);
-    if (!message.includes("undefined")) { // Validate if all fields are properly filled
-        var settings = {
-            "async": true,
-            "crossDomain": true,
-            "url": "https://api.telegram.org/bot" + telegram_bot_id + "/sendMessage",
-            "method": "POST",
-            "headers": {
-                "Content-Type": "application/json",
-                "cache-control": "no-cache"
-            },
-            "data": JSON.stringify({
-                "chat_id": chat_id,
-                "text": message
-            })
-        };
+    ready(country);
 
-        $.ajax(settings).done(function (response) {
-            console.log("Message sent successfully:", response);
-            alert("Your request has been sent!\nGet in touch with the Admin on Telegram\nUsername - @IamCOD3X");
-        }).fail(function (error) {
-            console.error("Error sending message:", error);
-            alert("Error sending request. Please try again later.");
+    const sendBtn = document.getElementById("sendBtn");
+    if (sendBtn) {
+        sendBtn.disabled = true;
+        sendBtn.innerText = "Sending...";
+    }
+
+    if (!message.includes("undefined")) { // Validate if all fields are properly filled
+        fetch("https://device-build-request.viperkernels.workers.dev/", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ message: message })
+        })
+        .then(res => res.json())
+        .then(res => {
+            if (res.success) {
+                sendBtn.innerText = "Sent! 😉";
+                alert("Your request has been sent!\nGet in touch with the Admin on Telegram\nUsername - @IamCOD3X");
+
+                // Reset button after 2 seconds
+                setTimeout(() => {
+                    sendBtn.disabled = false;
+                    sendBtn.innerText = "Send";
+                }, 2000);
+            } else {
+                sendBtn.disabled = false;
+                sendBtn.innerText = "Send";
+                alert("Failed to send message.");
+            }
+        })
+        .catch(error => {
+            sendBtn.disabled = false;
+            sendBtn.innerText = "Send";
+            alert("Network error, try again later.");
+            console.error(error);
         });
 
-        // Reset form fields after sending
-        document.getElementById("_Name").value = "";
-        document.getElementById("_Device").value = "";
-        document.getElementById("romType").value = "";
-        document.getElementById("stockROMInput").value = "";
-        document.getElementById("customROMSelect").value = "";
-        document.getElementById("customROMInput").value = "";
-        document.getElementById("_KernelVer").value = "";
-        document.getElementById("customKernelInput").value = "";
-        document.getElementById("_AndVer").value = "";
-        document.getElementById("customAndroidInput").value = "";
-        document.getElementById("_TelegramID").value = "";
+        // Clear form
+        const fieldsToClear = ["_Name", "_Device", "romType", "stockROMInput", "customROMSelect", "customROMInput",
+                                "_KernelVer", "customKernelInput", "_AndVer", "customAndroidInput", "_TelegramID", "_ConfirmTelegramID"];
+        fieldsToClear.forEach(id => document.getElementById(id).value = "");
     } else {
         alert("Please fill in all required fields correctly.");
     }
-    
+
     return false;
-};
+}
